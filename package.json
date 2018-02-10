@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/stoversa/liri-node-app.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["spotify", "twitter", "request"],
+  "author": "Sam Stover",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/stoversa/liri-node-app/issues"
