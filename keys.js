@@ -1,5 +1,5 @@
-console.log('this is loaded');
-
+//to use this app, create your own .env file with the keys below as placeholders.
+//review the dotenv package for more info
 exports.twitter = {
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
