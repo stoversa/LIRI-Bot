@@ -10,7 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/stoversa/liri-node-app.git"
   },
-  "keywords": ["spotify", "twitter", "request"],
+  "keywords": [
+    "spotify",
+    "twitter",
+    "request"
+  ],
   "author": "Sam Stover",
   "license": "ISC",
   "bugs": {
@@ -18,6 +22,7 @@
   },
   "homepage": "https://github.com/stoversa/liri-node-app#readme",
   "dependencies": {
+    "dotenv": "^5.0.0",
     "node-spotify-api": "^1.0.7",
     "request": "^2.83.0",
     "twitter": "^1.7.1"
