@@ -18,6 +18,7 @@ var input = process.argv[3];
 function myTweets(){
     client.get('statuses/user_timeline', 'StoverDeveloper', function (error, tweets, response) {
         if (!error) {
+            console.log("Here are your tweets: \n"); //inserts line between each tweet for legibility
             for (var x=0; x <= 19; x++){
                 var thisTweet = tweets[x]; //grabs x tweet
                 var timestamp = thisTweet.created_at //grabs only timestamp value
@@ -43,17 +44,21 @@ function spotifyThis(){
 
 //outputs movie information to your terminal/bash window
 function movieThis() {
-    console.log("movieThis");
-    /* This will output the following information to your terminal/bash window:
-
-   * Title of the movie.
-   * Year the movie came out.
-   * IMDB Rating of the movie.
-   * Rotten Tomatoes Rating of the movie.
-   * Country where the movie was produced.
-   * Language of the movie.
-   * Plot of the movie.
-   * Actors in the movie. */
+    request("http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy", function (error, response, body) {
+        if (!error && response.statusCode === 200) {
+            var movie = JSON.parse(body);
+            console.log("Here's some information about your movie: \n"); //inserts line between each tweet for legibility
+            console.log("Title: " + (movie["Title"] || "No title available")); //Title of the movie.
+            console.log("Year: " + (movie["Year"] || "No year available")); //Year the movie came out.
+            console.log("IMDB Rating: " + (movie["Ratings"][0]["Value"] || "No rating available"));//IMDB Rating of the movie.
+            console.log("Rotten Tomatoes Rating: " + (movie["Ratings"][1]["Value"] || "No rating available"));//Rotten Tomatoes Rating of the movie.
+            console.log("Country: " + (movie["Country"] || "No country information available")); //Country where the movie was produced.
+            console.log("Language(s): " + (movie["Language"] || "No language available")); // Language of the movie. 
+            console.log("Plot: " + (movie["Plot"] || "No plot information available"));// Plot of the movie. 
+            console.log("Actors: " + (movie["Actors"] || "No actor information available")); // Actors in the movie. 
+            console.log("__________________________\n"); //inserts line between each tweet for legibility
+        }
+    });
 };
 // Using the fs Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
 function doWhat() {
